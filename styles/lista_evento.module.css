@@ -1,9 +1,12 @@
-.list-group-item:hover{
- background-color: #ADB5B9;
- color: white;
+.input-group{
+ max-width: 90%;
 }
 
-.list-group-item:focus{
- color: white;
- background-color: #198754;
+.form-control:disabled{
+ background-color: #fff;
+}
+
+textarea.form-control{
+ max-height: 100px;
+ resize: none;
 }

@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
+import {Accordion, Badge, Button, FormControl, InputGroup} from "react-bootstrap";
 
 interface Lista_Evento {
     evento_id : number,
     nombre: string,
     ubicacion: string,
     descripcion?: string,
-    fecha: number
+    fecha: string
 }
 
 function Lista() {
@@ -25,23 +26,40 @@ function Lista() {
 
     if (!data || data.length < 1) return <p>No existen eventos en la BD</p>
     return (
-        <div className="list-group">
+        <Accordion>
             { data.map((evento: Lista_Evento) => {
                 return (
                     <Link key={evento.evento_id} href='#'>
-                        <a className="list-group-item list-group-item-action"
-                           aria-current="true">
-                            <div className="d-flex w-100 justify-content-between" >
-                                <h5 className="mb-1">{evento.nombre}</h5>
-                                <small>{evento.fecha}</small>
-                            </div>
-                            <p className="mb-1">{evento.ubicacion}</p>
-                            <small>{evento.descripcion? evento.descripcion : ''}</small>
-                        </a>
+                        <Accordion.Item eventKey={evento.evento_id.toString()}>
+                            <Accordion.Header>{evento.nombre}</Accordion.Header>
+                            <Accordion.Body>
+                                <div className="d-flex w-100 justify-content-between mb-2" >
+                                    <div>
+                                        <button type="button" className="btn btn-success btn-sm me-2">Editar</button>
+                                        <button type="button" className="btn btn-secondary btn-sm">Abrir</button>
+                                    </div>
+                                    <Button variant="primary">
+                                        Fecha: <Badge bg="secondary">{evento.fecha}</Badge>
+                                    </Button>
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text" id="basic-addon1">Ubicacion</span>
+                                    <input type="text" className="form-control" defaultValue={evento.ubicacion} disabled={true} />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text" id="basic-addon1">Numero de pilotos</span>
+                                    <input type="number" className="form-control" disabled={true}/>
+                                </div>
+                                <div className="input-group">
+                                    <span className="input-group-text">Descripcion</span>
+                                    <textarea className="form-control" disabled={true} defaultValue = {evento.descripcion? evento.descripcion : 'Sin descripcion'}></textarea>
+                                </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
                     </Link>
                 )
             }) }
-        </div>
+        </Accordion>
     )
 
 }
