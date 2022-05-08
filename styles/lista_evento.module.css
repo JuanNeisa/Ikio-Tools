@@ -1,0 +1,9 @@
+.list-group-item:hover{
+ background-color: #ADB5B9;
+ color: white;
+}
+
+.list-group-item:focus{
+ color: white;
+ background-color: #198754;
+}

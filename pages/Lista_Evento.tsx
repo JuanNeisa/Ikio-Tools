@@ -1,5 +1,3 @@
-import '../styles/Lista_evento.module.css'
-
 import {useEffect, useState} from "react";
 import Link from "next/link";
 
@@ -31,9 +29,9 @@ function Lista() {
             { data.map((evento: Lista_Evento) => {
                 return (
                     <Link key={evento.evento_id} href='#'>
-                        <a className={`list-group-item list-group-item-action`}
+                        <a className="list-group-item list-group-item-action"
                            aria-current="true">
-                            <div className="d-flex w-100 justify-content-between">
+                            <div className="d-flex w-100 justify-content-between" >
                                 <h5 className="mb-1">{evento.nombre}</h5>
                                 <small>{evento.fecha}</small>
                             </div>
@@ -44,8 +42,8 @@ function Lista() {
                 )
             }) }
         </div>
-
     )
+
 }
 
 export default Lista
