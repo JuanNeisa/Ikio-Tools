@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Lista from "./Lista_Evento";
+import Lista from "./lista_Evento";
 
 const Home: NextPage = () => {
   return (

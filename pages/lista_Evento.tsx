@@ -29,14 +29,15 @@ function Lista() {
         <Accordion>
             { data.map((evento: Lista_Evento) => {
                 return (
-                    <Link key={evento.evento_id} href='#'>
-                        <Accordion.Item eventKey={evento.evento_id.toString()}>
+                        <Accordion.Item key={evento.evento_id} eventKey={evento.evento_id.toString()}>
                             <Accordion.Header>{evento.nombre}</Accordion.Header>
                             <Accordion.Body>
                                 <div className="d-flex w-100 justify-content-between mb-2" >
                                     <div>
                                         <button type="button" className="btn btn-success btn-sm me-2">Editar</button>
-                                        <button type="button" className="btn btn-secondary btn-sm">Abrir</button>
+                                        <Link  href={`/evento/${evento.evento_id}`}>
+                                            <button type="button" className="btn btn-secondary btn-sm">Abrir</button>
+                                        </Link>
                                     </div>
                                     <Button variant="primary">
                                         Fecha: <Badge bg="secondary">{evento.fecha}</Badge>
@@ -56,7 +57,6 @@ function Lista() {
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>
-                    </Link>
                 )
             }) }
         </Accordion>
