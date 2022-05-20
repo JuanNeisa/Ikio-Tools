@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import Link from "next/link";
 import {Accordion, Badge, Button, FormControl, InputGroup} from "react-bootstrap";
 
-interface Lista_Evento {
+interface Evento {
     evento_id : number,
     nombre: string,
     ubicacion: string,
@@ -27,7 +27,7 @@ function Lista() {
     if (!data || data.length < 1) return <p>No existen eventos en la BD</p>
     return (
         <Accordion>
-            { data.map((evento: Lista_Evento) => {
+            { data.map((evento: Evento) => {
                 return (
                         <Accordion.Item key={evento.evento_id} eventKey={evento.evento_id.toString()}>
                             <Accordion.Header>{evento.nombre}</Accordion.Header>

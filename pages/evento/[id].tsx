@@ -1,10 +1,24 @@
 import {useRouter} from "next/router";
 import '../../styles/eventos.module.css'
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 export default function Evento() {
+    const [data, setData] = useState<any>(null);
+    const [isLoading, setLoading] = useState(false);
     const router = useRouter();
-    const id = router.query.id
+    const id = router.query.id;
+
+    useEffect(() => {
+        setLoading(true)
+        fetch(`/api/evento/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setData(data[0])
+                setLoading(false)
+            })
+    }, [])
+
     return (
         <div>
             <nav aria-label="breadcrumb" className="m-3">
@@ -17,7 +31,7 @@ export default function Evento() {
                                 </div>
                             </li>
                     </Link>
-                    <li className="breadcrumb-item active" aria-current="page">Nombre del evento xd</li>
+                    <li className="breadcrumb-item active" aria-current="page">{data?.nombre}</li>
                 </ol>
             </nav>
             <h1 className="text-center">Dashboard</h1>
