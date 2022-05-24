@@ -8,11 +8,13 @@ interface Evento {
     nombre: string,
     ubicacion: string,
     descripcion?: string,
-    fecha: string
+    fecha: string,
+    estado: number
 }
 
 export default function Evento() {
     const [data, setData] = useState<Evento>();
+    const [n_pilotos, setPilotos] = useState<number>();
     const [isLoading, setLoading] = useState(false);
     const router = useRouter();
     const id = router.query.id;
@@ -21,9 +23,11 @@ export default function Evento() {
         setLoading(true)
         fetch(`/api/evento/${id}`)
             .then((res) => res.json())
-            .then((data) => {
-                setData(data[0])
+            .then((obj) => {
+                setData(obj.data[0])
                 console.log(data)
+                setPilotos(obj.n_pilotos)
+                // console.log(n_pilotos)
                 setLoading(false)
             })
     }, [])
@@ -65,12 +69,41 @@ export default function Evento() {
                 <div className="row m-2 ">
                     <span className="col-4 fw-bolder ">Status</span>
                     <div className="col-8">
-                        <nav className="breadcrumbs">
-                            <a className="breadcrumbs__item is-active">Configuracion</a>
-                            <a className="breadcrumbs__item">Pilotos</a>
-                            <a className="breadcrumbs__item">Carreras</a>
-                            <a className="breadcrumbs__item">Informes</a>
-                        </nav>
+                        { data &&
+                            <nav  className="breadcrumbs">
+                                <a className={`breadcrumbs__item ${data!.estado >= 1? "is-active" : ""}`}>Configuracion</a>
+                                <a className={`breadcrumbs__item ${data!.estado >= 2? "is-active" : ""}`}>Pilotos</a>
+                                <a className={`breadcrumbs__item ${data!.estado >= 3? "is-active" : ""}`}>Carreras</a>
+                                <a className={`breadcrumbs__item ${data!.estado >= 4? "is-active" : ""}`}>Informes</a>
+                            </nav>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="tarjetas col-4 pt-2 rounded-3">
+                        <div className="card border-primary mb-1">
+                            <div className="card-header bg-primary text-light border-primary">Numero de pilotos</div>
+                            <div className="card-body text-primary">
+                                {(n_pilotos)?Object.values(n_pilotos)[0]:'---'}
+                            </div>  
+                        </div>
+                        <div className="card border-warning mb-1">
+                            <div className="card-header bg-warning  text-light border-warning ">Numero de categorias</div>
+                            <div className="card-body text-warning">
+                                <h3 className="card-title">---</h3>
+                            </div>  
+                        </div>
+                        <div className="card border-success mb-1">
+                            <div className="card-header bg-success text-light border-success">Numero de carreras</div>
+                            <div className="card-body text-success">
+                                <h3 className="card-title">---</h3>
+                            </div>  
+                        </div>
+                    </div>
+                    <div className="col-8 p-3">
+                        <h4>Sponsors</h4>
                     </div>
                 </div>
             </div>

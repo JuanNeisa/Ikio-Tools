@@ -69,3 +69,17 @@
 .breadcrumbs__item.is-active:after {
     background: #198754;
 }
+
+.card{
+    width: 100%;
+}
+
+.tarjetas {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+}

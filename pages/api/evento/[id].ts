@@ -19,13 +19,15 @@ export default async function obtenerEventoById(
         driver: sqlite3.cached.Database
     });
 
-    if(!exist) await db.migrate({force:true});
+    // if(!exist) await db.migrate({force:true});
+    await db.migrate({force:true});
     let data = await db.all('SELECT * FROM evento WHERE evento_id = ?;', [req.query.id] );
+    let n_pilotos = await db.get('SELECT COUNT(*) as n_pilotos FROM piloto WHERE evento_id = ?;', [req.query.id]);
 
     if(req.method !== 'GET'){
         res.status(500).json({
             message: "error: Solo se aceptan peticiones GET"
         })
     }
-    res.json(data);
+    res.json({data,n_pilotos});
 }
