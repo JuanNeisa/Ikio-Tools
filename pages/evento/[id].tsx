@@ -1,10 +1,18 @@
 import {useRouter} from "next/router";
-import '../../styles/eventos.module.css'
+import '../../styles/evento.module.css'
 import Link from "next/link";
 import {useEffect, useState} from "react";
 
+interface Evento {
+    evento_id : number,
+    nombre: string,
+    ubicacion: string,
+    descripcion?: string,
+    fecha: string
+}
+
 export default function Evento() {
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<Evento>();
     const [isLoading, setLoading] = useState(false);
     const router = useRouter();
     const id = router.query.id;
@@ -35,34 +43,33 @@ export default function Evento() {
                 </ol>
             </nav>
             <h1 className="text-center">Dashboard</h1>
-            <div className="d-flex justify-content-around align-items-center m-3">
-                <div className="card text-white bg-success m-3" >
-                    <div className="card-body">
-                        <h3 className="card-title"><span className="badge bg-dark me-2">1</span>Carga de pilotos</h3>
-                        <p className="card-text">Carga  la informacion de todos los pilotos de la competencia.</p>
-                        <div className="d-flex justify-content-end">
-                            <button type="button" className="btn btn-dark">Cargar</button>
-                        </div>
-                    </div>
+            <div className="container border border-3 p-4 rounded-3">
+                <h4><i className="bi bi-info-square me-2"></i>Informacion</h4>
+                <div className="row m-2">
+                    <span className="col-4 fw-bolder">Fecha</span>
+                    <span className="col-8">{data?.fecha}</span>
                 </div>
-                <i className="bi bi-arrow-bar-right"></i>
-                <div className="card text-white bg-secondary m-3" >
-                    <div className="card-body">
-                        <h3 className="card-title"><span className="badge bg-dark  me-2">2</span>Carga de carreras</h3>
-                        <p className="card-text">Sobre los pilotos ingresados generar carreras por categoria</p>
-                        <div className="d-flex justify-content-end">
-                            <button type="button" className="btn btn-dark">Crear</button>
-                        </div>
-                    </div>
+                <div className="row m-2">
+                    <span className="col-4 fw-bolder">Nombre</span>
+                    <span className="col-8">{data?.nombre}</span>
                 </div>
-                <i className="bi bi-arrow-bar-right"></i>
-                <div className="card text-white bg-secondary m-3" >
-                    <div className="card-body">
-                        <h3 className="card-title"><span className="badge bg-dark me-2">3</span>Generar resultados</h3>
-                        <p className="card-text">Generacion de resultados de la competencia.</p>
-                        <div className="d-flex justify-content-end">
-                            <button type="button" className="btn btn-dark">Generar</button>
-                        </div>
+                <div className="row m-2">
+                    <span className="col-4 fw-bolder">Ubicacion</span>
+                    <span className="col-8">{data?.ubicacion}</span>
+                </div>
+                <div className="row m-2">
+                    <span className="col-4 fw-bolder">Descripcion</span>
+                    <span className="col-8">{(data?.descripcion)?data?.descripcion:'Sin descripcion'}</span>
+                </div>
+                <div className="row m-2 ">
+                    <span className="col-4 fw-bolder ">Status</span>
+                    <div className="col-8">
+                        <nav className="breadcrumbs">
+                            <a className="breadcrumbs__item is-active" href="#">Configuracion</a>
+                            <a className="breadcrumbs__item">Pilotos</a>
+                            <a className="breadcrumbs__item">Carreras</a>
+                            <a className="breadcrumbs__item">Informes</a>
+                        </nav>
                     </div>
                 </div>
             </div>

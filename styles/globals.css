@@ -1,5 +1,5 @@
 @import './lista_evento.module.css';
-@import './eventos.module.css';
+@import 'evento.module.css';
 
 html,
 body {
