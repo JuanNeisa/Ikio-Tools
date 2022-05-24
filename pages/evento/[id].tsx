@@ -23,6 +23,7 @@ export default function Evento() {
             .then((res) => res.json())
             .then((data) => {
                 setData(data[0])
+                console.log(data)
                 setLoading(false)
             })
     }, [])
@@ -65,7 +66,7 @@ export default function Evento() {
                     <span className="col-4 fw-bolder ">Status</span>
                     <div className="col-8">
                         <nav className="breadcrumbs">
-                            <a className="breadcrumbs__item is-active" href="#">Configuracion</a>
+                            <a className="breadcrumbs__item is-active">Configuracion</a>
                             <a className="breadcrumbs__item">Pilotos</a>
                             <a className="breadcrumbs__item">Carreras</a>
                             <a className="breadcrumbs__item">Informes</a>

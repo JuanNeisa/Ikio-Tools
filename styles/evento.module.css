@@ -39,7 +39,6 @@
 
 .breadcrumbs__item:hover:after,
 .breadcrumbs__item:hover {
-    background: #edf1f5;
     color: black;
 }
 
@@ -62,10 +61,11 @@
     margin-left: 1px;
 }
 
-.breadcrumbs__item:last-child {
-    border-right: none;
+.breadcrumbs__item.is-active {
+    background: #198754;
+    color: #fff;
 }
 
-.breadcrumbs__item.is-active {
-    background: red;
+.breadcrumbs__item.is-active:after {
+    background: #198754;
 }
