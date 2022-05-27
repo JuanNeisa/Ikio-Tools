@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
-import {Accordion, Badge, Button, FormControl, InputGroup} from "react-bootstrap";
+import {Accordion, Badge, Button} from "react-bootstrap";
 
 interface Evento {
     evento_id : number,

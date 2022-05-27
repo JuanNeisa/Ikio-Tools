@@ -3,6 +3,9 @@ import '../../styles/evento.module.css'
 import Link from "next/link";
 import {useEffect, useState} from "react";
 
+import ModalWindow from "../Activos/modal"
+import {estructuraModal, pasoEvento} from '../Utils/pasosEventos'
+
 interface Evento {
     evento_id : number,
     nombre: string,
@@ -16,6 +19,11 @@ export default function Evento() {
     const [data, setData] = useState<Evento>();
     const [n_pilotos, setPilotos] = useState<number>();
     const [isLoading, setLoading] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const router = useRouter();
     const id = router.query.id;
 
@@ -31,6 +39,11 @@ export default function Evento() {
                 setLoading(false)
             })
     }, [])
+
+    let configuracion = {
+        esVisible: show,
+        enCierre: handleClose
+    }
 
     return (
         <div>
@@ -72,7 +85,8 @@ export default function Evento() {
                         { data &&
                             <nav  className="breadcrumbs">
                                 <a className={`breadcrumbs__item ${data!.estado >= 1? "is-active" : ""}`}>Configuracion</a>
-                                <a className={`breadcrumbs__item ${data!.estado >= 2? "is-active" : ""}`}>Pilotos</a>
+                                <a className={`breadcrumbs__item ${data!.estado >= 2? "is-active" : ""}`}
+                                onClick={handleShow}>Pilotos</a>
                                 <a className={`breadcrumbs__item ${data!.estado >= 3? "is-active" : ""}`}>Carreras</a>
                                 <a className={`breadcrumbs__item ${data!.estado >= 4? "is-active" : ""}`}>Informes</a>
                             </nav>
@@ -107,6 +121,7 @@ export default function Evento() {
                     </div>
                 </div>
             </div>
+            <ModalWindow configuracion={configuracion} titulo="Prueba1" cuerpo={estructuraModal(pasoEvento.INSC_PILOTOS)}/>
         </div>
     )
 }

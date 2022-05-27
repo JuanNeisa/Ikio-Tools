@@ -29,6 +29,7 @@ yarn-error.log*
 .env*.local
 ikio.db
 .idea/
+package-lock.json
 
 # vercel
 .vercel
