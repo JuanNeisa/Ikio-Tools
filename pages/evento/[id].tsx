@@ -35,7 +35,6 @@ export default function Evento() {
                 setData(obj.data[0])
                 console.log(data)
                 setPilotos(obj.n_pilotos)
-                // console.log(n_pilotos)
                 setLoading(false)
             })
     }, [])
@@ -97,21 +96,21 @@ export default function Evento() {
             <div className="container">
                 <div className="row">
                     <div className="tarjetas col-4 pt-2 rounded-3">
-                        <div className="card border-primary mb-1">
-                            <div className="card-header bg-primary text-light border-primary">Numero de pilotos</div>
-                            <div className="card-body text-primary">
+                        <div className="card border-secondary mb-1">
+                            <div className="card-header bg-secondary text-light border-secondary">Numero de pilotos</div>
+                            <div className="card-body text-secondary">
                                 {(n_pilotos)?Object.values(n_pilotos)[0]:'---'}
                             </div>  
                         </div>
-                        <div className="card border-warning mb-1">
-                            <div className="card-header bg-warning  text-light border-warning ">Numero de categorias</div>
-                            <div className="card-body text-warning">
+                        <div className="card border-secondary mb-1">
+                            <div className="card-header bg-secondary  text-light border-secondary">Numero de categorias</div>
+                            <div className="card-body text-secondary">
                                 <h3 className="card-title">---</h3>
                             </div>  
                         </div>
-                        <div className="card border-success mb-1">
-                            <div className="card-header bg-success text-light border-success">Numero de carreras</div>
-                            <div className="card-body text-success">
+                        <div className="card border-secondary mb-1">
+                            <div className="card-header bg-secondary text-light border-secondary">Numero de carreras</div>
+                            <div className="card-body text-secondary">
                                 <h3 className="card-title">---</h3>
                             </div>  
                         </div>
@@ -121,7 +120,7 @@ export default function Evento() {
                     </div>
                 </div>
             </div>
-            <ModalWindow configuracion={configuracion} titulo="Prueba1" cuerpo={estructuraModal(pasoEvento.INSC_PILOTOS)}/>
+            <ModalWindow configuracion={configuracion} titulo="Carga informacion" cuerpo={estructuraModal(pasoEvento.INSC_PILOTOS)}/>
         </div>
     )
 }

@@ -10,7 +10,6 @@ export const estructuraModal = function (evento:pasoEvento) {
         case pasoEvento.INSC_PILOTOS:
             return (
                 <>
-                    <h3>Carga de informacion</h3>
                     <span>Cargue a continuacion la informacion de todos los pilotos en formato CSV.</span>
                     <div className="input-group mb-3">
                         <button className="btn btn-outline-secondary" type="button">Subir</button>

@@ -18,12 +18,9 @@ CREATE TABLE piloto(
 	FOREIGN KEY (evento_id) REFERENCES evento (evento_id)
 );
 
-INSERT INTO evento VALUES(null,'Gladeadores OffRoad', 'Modoñedo', null, 1, 22042022 );
-INSERT INTO evento VALUES(null,'Valida Nacional Enduro FIM', 'La Florida', null, 1, 02042022 );
-INSERT INTO evento VALUES(null,'Lista_Evento 3', 'La Mariposita', null, 1, 22042022 );
-INSERT INTO evento VALUES(null,'Enduro FIM 5', 'Laguna Seca - Guasca', null, 1, 12042022 );
+INSERT INTO evento VALUES(null,'Gladeadores OffRoad 2022-1', 'Modoñedo', 'Evento multimarca y multiproposito organizado por BikeFriend', 1, 22042022 );
 
-INSERT INTO piloto VALUES(321,'Juan David Neisa', null, null, null, 1 );
+INSERT INTO piloto VALUES(321,'Juan David Neisa', 'Bogota', 'Cundinamarca', 'IkioRace Club', 1 );
 
 -- Down
 DROP TABLE evento;
