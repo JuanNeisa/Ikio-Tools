@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Event_list from '../containers/Events-list';
+import Event_list from '../containers/event-list';
 
 const Home: NextPage = () => {
   return (

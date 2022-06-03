@@ -1,7 +1,14 @@
+import { IEvento } from "../../core/models/database.model";
 import { EventDashboard_Header } from "./event-dashboard.header";
 
-export function EventDashboard() {
+interface Props {
+    data: IEvento
+}
+
+export function EventDashboard(props: Props) {
     return(
-        <EventDashboard_Header />
+        <div className="container">
+            <EventDashboard_Header data={props.data}/>
+        </div>
     )
 }

@@ -4,5 +4,6 @@ export interface IEvento {
     ubicacion: string,
     descripcion?: string,
     fecha: string,
-    estado: number
+    estado: number,
+    n_pilotos?: number
 }

@@ -3,6 +3,7 @@ import { open } from 'sqlite'
 import sqlite3 from "sqlite3";
 import path from "path";
 import fs from 'fs'
+import { IEvento } from "../../../core/models/database.model";
 
 export default async function obtenerEventos(req: NextApiRequest, res: NextApiResponse) {
     let exist;
@@ -18,12 +19,16 @@ export default async function obtenerEventos(req: NextApiRequest, res: NextApiRe
     });
 
     if(!exist) await db.migrate({force:true});
-    let data = await db.all('SELECT * FROM evento;');
+    let data = await db.all<IEvento[]>('SELECT * FROM evento;');
 
-    if(req.method !== 'GET'){
-        res.status(500).json({
-            message: "error: Solo se aceptan peticiones GET"
-        })
+    switch(req.method){
+        case 'GET':
+            res.status(200).json(data);
+            break;
+        default:
+            res.status(500).json({
+                message: "error: Solo se aceptan peticiones GET"
+            })
+            break;
     }
-    res.json(data);
 }
