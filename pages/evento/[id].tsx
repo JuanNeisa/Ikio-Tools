@@ -1,22 +1,14 @@
 import {useRouter} from "next/router";
 import '../../styles/evento.module.css'
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
-import ModalWindow from "../Activos/modal"
 import {estructuraModal, pasoEvento} from '../Utils/pasosEventos'
-
-interface Evento {
-    evento_id : number,
-    nombre: string,
-    ubicacion: string,
-    descripcion?: string,
-    fecha: string,
-    estado: number
-}
+import { Bread_crumb } from "../../components/bread-crumb";
+import { Status_bar } from "../../components/status-bar";
+import { IEvento } from "../../core/models/database.model";
 
 export default function Evento() {
-    const [data, setData] = useState<Evento>();
+    const [data, setData] = useState<IEvento>();
     const [n_pilotos, setPilotos] = useState<number>();
     const [isLoading, setLoading] = useState(false);
     const [show, setShow] = useState(false);
@@ -33,7 +25,6 @@ export default function Evento() {
             .then((res) => res.json())
             .then((obj) => {
                 setData(obj.data[0])
-                console.log(data)
                 setPilotos(obj.n_pilotos)
                 setLoading(false)
             })
@@ -46,19 +37,10 @@ export default function Evento() {
 
     return (
         <div>
-            <nav aria-label="breadcrumb" className="m-3">
-                <ol className="breadcrumb">
-                    <Link href="/">
-                            <li className="breadcrumb-item">
-                                <div>
-                                <i className="bi bi-calendar me-1"></i>
-                                <a>Eventos</a>
-                                </div>
-                            </li>
-                    </Link>
-                    <li className="breadcrumb-item active" aria-current="page">{data?.nombre}</li>
-                </ol>
-            </nav>
+            <Bread_crumb 
+                route={[{titleRoute:'eventos', url:'/', icon:'bi bi-calendar'}]} 
+                title={data?data.nombre:'Cargando...'}                
+            />
             <h1 className="text-center">Dashboard</h1>
             <div className="container border border-3 p-4 rounded-3">
                 <h4><i className="bi bi-info-square me-2"></i>Informacion</h4>
@@ -82,13 +64,13 @@ export default function Evento() {
                     <span className="col-4 fw-bolder ">Status</span>
                     <div className="col-8">
                         { data &&
-                            <nav  className="breadcrumbs">
-                                <a className={`breadcrumbs__item ${data!.estado >= 1? "is-active" : ""}`}>Configuracion</a>
-                                <a className={`breadcrumbs__item ${data!.estado >= 2? "is-active" : ""}`}
-                                onClick={handleShow}>Pilotos</a>
-                                <a className={`breadcrumbs__item ${data!.estado >= 3? "is-active" : ""}`}>Carreras</a>
-                                <a className={`breadcrumbs__item ${data!.estado >= 4? "is-active" : ""}`}>Informes</a>
-                            </nav>
+                            <Status_bar data={[
+                                {title: 'Configuracion' , onClick: ()=>{console.log('Configuracion')}},
+                                {title: 'Pilotos' , onClick: ()=>{console.log('Pilotos')}},
+                                {title: 'Carreras' , onClick: ()=>{console.log('Carreras')}},
+                                {title: 'Informes' , onClick: ()=>{console.log('Informes')}}
+                            ]}
+                            state={data!.estado} />
                         }
                     </div>
                 </div>
@@ -120,7 +102,6 @@ export default function Evento() {
                     </div>
                 </div>
             </div>
-            <ModalWindow configuracion={configuracion} titulo="Carga informacion" cuerpo={estructuraModal(pasoEvento.INSC_PILOTOS)}/>
         </div>
     )
 }

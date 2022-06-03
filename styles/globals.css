@@ -1,4 +1,8 @@
-@import './lista_evento.module.css';
+/* COMPONENTS */
+@import '../components/list-group/list-group.component.css';
+@import '../components/status-bar/status-bar.component.css';
+@import '../components/bread-crumb/bread-crumb.component.css';
+
 @import 'evento.module.css';
 
 html,

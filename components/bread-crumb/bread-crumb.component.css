@@ -1,0 +1,13 @@
+.breadcrumb{
+    align-items: center;
+    font-size: 20px;
+}
+
+.breadcrumb-item div{
+    color: #198754;
+}
+
+.breadcrumb-item div:hover{
+    opacity: 1;
+    font-weight: bold;
+}

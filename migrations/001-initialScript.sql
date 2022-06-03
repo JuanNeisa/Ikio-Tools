@@ -18,7 +18,7 @@ CREATE TABLE piloto(
 	FOREIGN KEY (evento_id) REFERENCES evento (evento_id)
 );
 
-INSERT INTO evento VALUES(null,'Gladeadores OffRoad 2022-1', 'Modoñedo', 'Evento multimarca y multiproposito organizado por BikeFriend', 1, 22042022 );
+INSERT INTO evento VALUES(null,'Gladeadores OffRoad 2022-1', 'Modoñedo', 'Evento multimarca y multiproposito organizado por el grupo BikeFriend', 1, 22042022 );
 
 INSERT INTO piloto VALUES(321,'Juan David Neisa', 'Bogota', 'Cundinamarca', 'IkioRace Club', 1 );
 

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Lista from "./lista_Evento";
+import Event_list from '../containers/Events-list';
 
 const Home: NextPage = () => {
   return (
@@ -9,7 +9,7 @@ const Home: NextPage = () => {
           <h3>Lista eventos</h3>
           <button type="button" className="btn btn-success">Adicionar</button>
         </div>
-          <Lista />
+          <Event_list />
       </div>
   )
 }
