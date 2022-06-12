@@ -12,10 +12,8 @@ export default async function obtenerEventoById(
 
     switch(req.method){
         case 'GET':
-            let data: any;
-            let n_pilotos: any
-            data = await db.get<IEvento>('SELECT * FROM evento WHERE evento_id = ?;', [req.query.id] );
-            n_pilotos = db.get('SELECT COUNT(*) as n_pilotos FROM piloto WHERE evento_id = ?;', [req.query.id]);
+            let data = await db.get<IEvento>('SELECT * FROM evento WHERE evento_id = ?;', [req.query.id] );
+            let n_pilotos = await db.get('SELECT COUNT(*) as n_pilotos FROM piloto WHERE evento_id = ?;', [req.query.id]);
             res.status(200).json({...data, ...n_pilotos});
             break;
         case 'POST':

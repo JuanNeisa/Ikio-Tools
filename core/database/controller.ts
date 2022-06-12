@@ -13,7 +13,7 @@ export class sqliteDatabase{
     }
 
     getIsMigration(){
-        return this.isMigration
+        return !this.isMigration
     }
 
     async getDB(){

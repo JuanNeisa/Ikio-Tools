@@ -17,8 +17,9 @@ export default function List_group(props: Props){
                             <div className="d-flex w-100 justify-content-between mb-2" >
                                 <div>
                                     <Link  href={`/evento/${evento.evento_id}`}>
-                                        <button type="button" className="btn btn-secondary btn-sm">Abrir</button>
+                                        <button type="button" className="btn btn-secondary btn-sm me-2">Abrir</button>
                                     </Link>
+                                    <button type="button" className="btn btn-danger btn-sm me-2">Eliminar</button>
                                 </div>
                                 <Button variant="primary">
                                     Fecha: <Badge bg="secondary">{evento.fecha}</Badge>
@@ -30,7 +31,7 @@ export default function List_group(props: Props){
                             </div>
                             <div className="input-group mb-1">
                                 <span className="input-group-text" id="basic-addon1">Numero de pilotos</span>
-                                <input type="number" className="form-control" disabled={true}/>
+                                <input type="number" className="form-control" defaultValue={evento.n_pilotos} disabled={true}/>
                             </div>
                             <div className="input-group">
                                 <span className="input-group-text">Descripcion</span>

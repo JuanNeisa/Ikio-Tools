@@ -10,7 +10,7 @@ export default function Event_list(){
 
     useEffect(() => {
         dispatch(state => ({ ...state, isLoading: true }));
-        fetch('api/evento  ')
+        fetch('api/evento')
             .then((res) => res.json())
             .then((data) => {
                 dispatch({ data, error: null, isLoading: false })
