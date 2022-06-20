@@ -22,7 +22,6 @@ export default function Evento() {
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
-                console.log(data)
                 dispatch({ error: null, isLoading: false })
             })
             .catch(error => dispatch({ error, isLoading: false }));

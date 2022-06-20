@@ -34,10 +34,6 @@ export default function Modal_box(props: Props) {
                 <Modal.Body>
                     {props.body}
                 </Modal.Body>
-
-                <Modal.Footer>
-                    <button type="button" className="btn btn-secondary" onClick={handleClose}>Secondary</button>
-                </Modal.Footer>
             </Modal>
         ) : null;
     

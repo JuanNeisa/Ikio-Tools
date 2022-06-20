@@ -10,18 +10,40 @@ export default async function obtenerEventos(req: NextApiRequest, res: NextApiRe
 
     switch(req.method){
         case 'GET':
-            let data = await db.all<IEvento[]>('SELECT * FROM evento;');
-            await Promise.all(data.map(async (event, index)=>{
-                let n_pilotos = await db.get('SELECT COUNT(*) as n_pilotos FROM piloto WHERE evento_id = ?;', [event.evento_id]);
-                data[index] = {...event,...n_pilotos}
-            }))
-            res.status(200).json(data);
+            try {
+                let data = await db.all<IEvento[]>('SELECT * FROM evento;');
+                await Promise.all(data.map(async (event, index)=>{
+                    let n_pilotos = await db.get('SELECT COUNT(*) as n_pilotos FROM piloto WHERE evento_id = ?;', [event.evento_id]);
+                    data[index] = {...event,...n_pilotos}
+                }))
+                res.status(200).send(data);
+            } catch (error) {
+                res.status(500).send({error})
+            }
             break;
         case 'POST':
-            console.log(req)
+            try {
+                const result = await db.run('INSERT INTO evento VALUES(null,?,?,?,1,?)',
+                    req.body.event.nombre,
+                    req.body.event.ubicacion,
+                    req.body.event.descripcion,
+                    req.body.event.fecha,
+                )
+                res.status(200).send({message: 'Successfully', result})
+            } catch (error) {
+                res.status(500).send({error})
+            }
+            break;
+        case 'DELETE':
+            try {
+                const result = await db.run(`DELETE FROM evento WHERE evento_id = ${req.body.eventId}`)
+                res.status(200).send({message: 'Successfully', result})
+            } catch (error) {
+                res.status(500).send({error})
+            }
             break;
         default:
-            res.status(405).json({
+            res.status(405).send({
                 message: "ERROR: Problema en la peticion"
             })
             break;

@@ -1,5 +1,4 @@
 import sqlite3 from 'sqlite3'
-import { ISqlite, IMigrate } from 'sqlite'
 import { open } from 'sqlite'
 import { fileExists } from '../utils/database';
 

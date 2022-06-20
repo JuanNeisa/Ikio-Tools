@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useState } from 'react';
 import Modal_box from '../components/modal';
 import Event_list from '../containers/event-list';
-import { addEvent } from '../containers/event-list/constants';
+import { AddEventModal } from '../containers/event-list/modals/AddEventModal';
 
 const Home: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,7 +15,10 @@ const Home: NextPage = () => {
           <button type="button" className="btn btn-success" onClick={() => setShowModal(true)}>Adicionar</button>
         </div>
           <Event_list />
-          <Modal_box title={'Crear evento'} body={addEvent} isShow={showModal} onClose={() => setShowModal(false)} />
+          <Modal_box  title = {'Crear evento'} 
+                      body = {<AddEventModal />} 
+                      isShow = {showModal} 
+                      onClose = {() => setShowModal(false)} />
       </div>
   )
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Accordion, Badge, Button } from "react-bootstrap";
+import { deleteEvent } from "../../core/database/handlers/event/handler";
 import { IEvento } from "../../core/models/database.model";
 
 interface Props {
@@ -19,7 +20,7 @@ export default function List_group(props: Props){
                                     <Link  href={`/evento/${evento.evento_id}`}>
                                         <button type="button" className="btn btn-secondary btn-sm me-2">Abrir</button>
                                     </Link>
-                                    <button type="button" className="btn btn-danger btn-sm me-2">Eliminar</button>
+                                    <button type="button" className="btn btn-danger btn-sm me-2" onClick={() => deleteEvent(evento.evento_id)}>Eliminar</button>
                                 </div>
                                 <Button variant="primary">
                                     Fecha: <Badge bg="secondary">{evento.fecha}</Badge>
