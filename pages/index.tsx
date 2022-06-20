@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useState } from 'react';
+import InputArea from '../components/input-area';
 import Modal_box from '../components/modal';
 import Event_list from '../containers/event-list';
 import { AddEventModal } from '../containers/event-list/modals/AddEventModal';

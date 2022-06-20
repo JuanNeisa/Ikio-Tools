@@ -1,12 +1,16 @@
 import * as _ from "lodash";
+import { useState } from "react";
+import Modal_box from "../../components/modal";
 import { Status_bar } from "../../components/status-bar"
 import { IEvento } from "../../core/models/database.model"
+import { PilotsModal } from "./modals/pilotsModal";
 
 interface Props {
     data: IEvento
 }
 
 export function EventDashboard_Header(props: Props) {
+    const [showPilotsModal, setShowPilotModal] = useState(false);
     return(
         <div className="border border-3 p-4 rounded-3">
             <h4><i className="bi bi-info-square me-2"></i>Informacion</h4>
@@ -32,7 +36,7 @@ export function EventDashboard_Header(props: Props) {
                     { props.data &&
                         <Status_bar data={[
                             {title: 'Configuracion' , onClick: ()=>{console.log('Configuracion')}},
-                            {title: 'Pilotos' , onClick: ()=>{console.log('Pilotos')}},
+                            {title: 'Pilotos' , onClick: () => {setShowPilotModal(true)}},
                             {title: 'Carreras' , onClick: ()=>{console.log('Carreras')}},
                             {title: 'Informes' , onClick: ()=>{console.log('Informes')}}
                         ]}
@@ -40,6 +44,11 @@ export function EventDashboard_Header(props: Props) {
                     }
                 </div>
             </div>
+            <Modal_box 
+                title={"Agregar piloto"} 
+                body={<PilotsModal />} 
+                isShow={showPilotsModal} 
+                onClose={() => setShowPilotModal(false)} />
         </div>
     )
 }

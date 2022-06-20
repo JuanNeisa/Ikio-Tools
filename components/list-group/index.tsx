@@ -22,9 +22,7 @@ export default function List_group(props: Props){
                                     </Link>
                                     <button type="button" className="btn btn-danger btn-sm me-2" onClick={() => deleteEvent(evento.evento_id)}>Eliminar</button>
                                 </div>
-                                <Button variant="primary">
-                                    Fecha: <Badge bg="secondary">{evento.fecha}</Badge>
-                                </Button>
+                                <div className="badge bg-primary text-wrap">{evento.fecha}</div>
                             </div>
                             <div className="input-group mb-1">
                                 <span className="input-group-text" id="basic-addon1">Ubicacion</span>

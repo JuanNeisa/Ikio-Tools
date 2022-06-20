@@ -2,6 +2,7 @@
 @import '../components/list-group/list-group.component.css';
 @import '../components/status-bar/status-bar.component.css';
 @import '../components/bread-crumb/bread-crumb.component.css';
+@import '../components/input-area/input-area.component.css';
 
 @import 'evento.module.css';
 

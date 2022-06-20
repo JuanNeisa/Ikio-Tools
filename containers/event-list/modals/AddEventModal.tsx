@@ -40,7 +40,7 @@ export function AddEventModal () {
                     <textarea className="form-control" name="descripcion" onChange={handleInputChange}></textarea>
                 </div>
                 <div className='d-flex justify-content-end container-fluid'>
-                        <button type="submit" className="btn btn-success ms-2 mt-2">Agregar</button>
+                    <button type="submit" className="btn btn-success ms-2 mt-2">Agregar</button>
                 </div>
             </form>)
 }

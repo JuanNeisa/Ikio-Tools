@@ -1,0 +1,12 @@
+.drag-area {
+    border: 2px dashed black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.drag-area.active {
+    background-color: rgba(31, 31, 186, 0.318);
+}
