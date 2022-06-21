@@ -1,6 +1,7 @@
 .drag-area {
-    border: 2px dashed black;
+    border: 2px dashed #424242;
     border-radius: 5px;
+    background-color: #F2F2F2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,5 +9,13 @@
 }
 
 .drag-area.active {
-    background-color: rgba(31, 31, 186, 0.318);
+    background-color: #BDBEBF
+}
+
+.drag-area.success {
+    background-color: #19875475;
+}
+
+.drag-area.failed {
+    background-color: #dc354680;
 }

@@ -45,7 +45,7 @@ export function EventDashboard_Header(props: Props) {
                 </div>
             </div>
             <Modal_box 
-                title={"Agregar piloto"} 
+                title={"Agregar pilotos"} 
                 body={<PilotsModal />} 
                 isShow={showPilotsModal} 
                 onClose={() => setShowPilotModal(false)} />
