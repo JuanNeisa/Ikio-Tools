@@ -8,7 +8,11 @@ interface Props {
 export function EventDashboard_Header(props: Props) {
     return(
         <div className="border border-3 p-4 rounded-3">
-            <h4><i className="bi bi-info-square me-2"></i>Informacion</h4>
+            <div className="d-flex justify-content-between align-content-center">
+                <h4>Informacion</h4>
+                <i className="bi bi-info-square me-2" 
+                   style={{fontSize: '25px'}}></i>
+            </div>
             <div className="row m-2">
                 <span className="col-4 fw-bolder">Fecha</span>
                 <span className="col-8">{props.data?.fecha}</span>
