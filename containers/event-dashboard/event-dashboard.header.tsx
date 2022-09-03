@@ -30,7 +30,7 @@ export function EventDashboard_Header(props: Props) {
                 <span className="col-4 fw-bolder">Descripcion</span>
                 <span className="col-8">{(!_.isNil(props.data))?props.data.descripcion:'Sin descripcion'}</span>
             </div>
-            <div className="row m-2 ">
+            {/* <div className="row m-2 ">
                 <span className="col-4 fw-bolder ">Status</span>
                 <div className="col-8">
                     { props.data &&
@@ -43,7 +43,7 @@ export function EventDashboard_Header(props: Props) {
                         state={props.data.estado} />
                     }
                 </div>
-            </div>
+            </div> */}
             <Modal_box 
                 title={"Agregar pilotos"} 
                 body={<PilotsModal />} 

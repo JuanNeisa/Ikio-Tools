@@ -20,3 +20,7 @@
     overflow: auto;
     flex-direction: column;
 }
+
+.card-body {
+    padding: 10px;
+}
